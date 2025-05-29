@@ -1,0 +1,16 @@
+package rca.ne.java.EmployeePayment_MS.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+import rca.ne.java.EmployeePayment_MS.entity.Employee;
+import rca.ne.java.EmployeePayment_MS.entity.Message;
+
+import java.util.List;
+
+@Repository
+public interface MessageRepository extends JpaRepository<Message, Long> {
+    List<Message> findByEmployee(Employee employee);
+    List<Message> findByEmployeeAndMonthAndYear(Employee employee, Integer month, Integer year);
+    List<Message> findByMonthAndYear(Integer month, Integer year);
+    List<Message> findBySent(boolean sent);
+}
